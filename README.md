@@ -15,65 +15,36 @@ UYGULAMA NASIL İŞLİYOR
 
 Yukarıdaki örnekte, BiletSatisFormukoleksiyonlarda bulunan bir Windows Forms formülü oluşturuldu. Formda, 
 kullanıcıların adına, e-posta adresi, takım seçimini, stad seçimini ve bilet tüketmesi için gerekli kontroller bulunuyor.
-Kullanıcı "Satın Al" düğmesine tıkladığında, gerekli bilgileri alacak ve ardından satın almayı gerçekleştirecektir.
+Kullanıcı "Satın Al" düğmesine tıkladığında, gerekli bilgileri alacak ve ardından satın almayı gerçekleştirecektir
+
+UYGULAMA YAPIMI
+
+Öncelikle Windows Forms dosyası açalım. Ardından yapacağımız uygulamayı adım adım planlayalım.
+Yani ilk ne yapacağız sonra ne ile devam edeceğiz gibi.
+
+Öncelikle üst kısımda hangi takım taraftarı ve hanig stadda oynanacak maçı izleyeceğiz önu seçmek için bir görsel oluşturalım
+
+![Screenshot_14](https://github.com/BarkinGulgeci/macbiletsatis/assets/103943748/a2dba2a2-6143-49ec-b07f-37db690bfe6a)
+
+Kod Görseli İse Bu şekilde
+
+![Screenshot_4](https://github.com/BarkinGulgeci/macbiletsatis/assets/103943748/8a761a63-0e00-4fd2-97b7-d9a857828c84)
+
+Ardınndan biletin bize ait olduğunu gösteren kişisel bilgiler kısmın yapımına geçiyoruz
+
+![Screenshot_1](https://github.com/BarkinGulgeci/macbiletsatis/assets/103943748/9c8ba5e8-99c0-4452-9066-5705725d1a2f)
+
+Kod Görseli İse Bu şekilde
+
+![Screenshot_5](https://github.com/BarkinGulgeci/macbiletsatis/assets/103943748/4c5a09ca-a707-4c61-81ad-5d287f66c29d)
+
+Ardından kaç adet bilet alacağımızı gösteren toolboxı ekliyoruz
+
+![Screenshot_3](https://github.com/BarkinGulgeci/macbiletsatis/assets/103943748/36eac845-3386-4557-a9b2-8c02fabf8308)
+
+Kod Görseli İse Bu şekilde
+
+![Screenshot_7](https://github.com/BarkinGulgeci/macbiletsatis/assets/103943748/92a5a4ea-6e30-4046-91b8-bec2099caf70)
 
 
-Kod Görseli Bu Şekilde
-
-
-{
-
- using System; 
- using System.Windows.Forms;
- namespace MacBiletSatisUygulamasi
-  
-      public partial class BiletSatisFormu : Form
-    {
-        // Örnek veriler için bir liste
-        private string[] takimlar = { "Takım A", "Takım B", "Takım C" };
-        private string[] stadlar = { "Stad 1", "Stad 2", "Stad 3" };
-
-        public BiletSatisFormu()
-        {
-            InitializeComponent();
-
-            // Form yüklenirken verileri doldur
-            cmbTakimlar.DataSource = takimlar;
-            cmbStadlar.DataSource = stadlar;
-        }
-
-        private void btnSatinal_Click(object sender, EventArgs e)
-        {
-            // Kullanıcı bilgilerini al
-            string adSoyad = txtAdSoyad.Text;
-            string email = txtEmail.Text;
-            string takim = cmbTakimlar.SelectedItem.ToString();
-            string stad = cmbStadlar.SelectedItem.ToString();
-            int biletSayisi = (int)numBiletSayisi.Value;
-
-            // Biletleri satın alma işlemlerini burada yapabilirsiniz
-            // Örneğin, bir veritabanına kaydedebilir veya bir API'ye gönderebilirsiniz
-
-            // Satın alınan biletleri doğrulayın ve kullanıcıya geri bildirim verin
-            string mesaj = $"Sayın {adSoyad}, {biletSayisi} adet maç bileti başarıyla satın alındı!\n" +
-                $"Takım: {takim}\n" +
-                $"Stad: {stad}\n" +
-                $"E-posta: {email}";
-
-            MessageBox.Show(mesaj, "Maç Bileti Satın Alma", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Formu sıfırla
-            TemizleForm();
-        }
-
-        private void TemizleForm()
-        {
-            txtAdSoyad.Text = "";
-            txtEmail.Text = "";
-            cmbTakimlar.SelectedIndex = 0;
-            cmbStadlar.SelectedIndex = 0;
-            numBiletSayisi.Value = 1;
-        }
-    }
-}
 
